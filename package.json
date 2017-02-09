@@ -1,0 +1,21 @@
+{
+  "name": "nightlife-coordination",
+  "version": "0.0.0",
+  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porygonj/nightlife-coordination.git"
+  },
+  "author": "Jonathan Doliver <porygonj@gmail.com>",
+  "dependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/porygonj/nightlife-coordination/issues"
+  },
+  "homepage": "https://github.com/porygonj/nightlife-coordination#readme"
+}
