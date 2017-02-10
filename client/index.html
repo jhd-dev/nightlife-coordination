@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nightlife Coordination</title>
+        <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    </head>
+    <body>
+        <div id="col-main">
+            <header>
+                <h1 id="head-main">Nighlife Coordination</h1>
+                <h2 id="desc-main">See what bars to head to tonight!</h2>
+            </header>
+            <div id="search-bar">
+                <input id="search-text" type="text" name="loc"/>
+                <button id="search-btn">Search</button>
+            </div>
+            <div id="bar-list">
+                <div v-for="bar in bars" class="bar">
+                    <img class="bar-photo" :src="bar.image_url" />
+                    <div class="bar-info">
+                        <h3 class="bar-name">{{bar.name}}</h3>
+                        <div class="join-bar-btn"></div>
+                        <div class="bar-reviews">
+                            <div class="bar-review"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p id="yelp-credit">This service uses the <a href="https://www.yelp.com/developers">Yelp API</a>.</p>
+            </footer>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="/js/index.js"></script>
+    </body>
+</html>
