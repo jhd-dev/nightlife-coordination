@@ -60,7 +60,7 @@ module.exports = function(app, passport){
     app.route('/toggle-going')
         .get(function(req, res){
             if (req.user){
-                var updated_bar = JSON.parse(req.query.bar);console.log(req.url, updated_bar, req.query);////////
+                var updated_bar = JSON.parse(req.query.bar);console.log(req.url, updated_bar, req.query);/////////
                 User.findOne({
                     "twitter.id": req.user.twitter.id
                 }, function(err, user){

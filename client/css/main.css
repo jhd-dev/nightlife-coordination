@@ -1,0 +1,12 @@
+
+body {
+    font-family: 'Sansita', sans-serif;
+}
+
+.join-bar-btn {
+    background-color: red;
+}
+
+.join-bar-btn.user-going {
+    background-color: green;
+}

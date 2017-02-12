@@ -47,8 +47,12 @@ $(document).ready(function(){
                             for (var key in keys){
                                 updated_bar[keys[key]] = data.updated_bar[keys[key]];
                             }
-                            self.bars[bar.index] = updated_bar;
-                            console.log(updated_bar.user_attending, updated_bar.number_attending, updated_bar);
+                            
+                            //self.bars.push(updated_bar);
+                            console.log(self.bars);//, updated_bar.user_attending, updated_bar.number_attending, updated_bar);
+                            var copy = self.bars.slice();
+                            copy.splice(bar.index, 1, updated_bar);
+                            self.bars = copy;
                         }
                     }
                 });

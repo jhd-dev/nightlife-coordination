@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Nightlife Coordination</title>
+        <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
         <link rel="stylesheet" href="/css/main.css" type="text/css" />
     </head>
     <body>
@@ -20,7 +21,7 @@
                     <div class="bar-info">
                         <h3 class="bar-name">{{bar.name}}</h3>
                         <img class="bar-rating" :src="bar.rating_img_url" />
-                        <div class="{
+                        <div :class="{
                             'join-bar-btn': true,
                             'user-going': bar.user_attending
                         }" v-on:click="toggleUser(bar)">{{bar.number_attending}} going</div>
