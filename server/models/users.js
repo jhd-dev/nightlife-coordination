@@ -7,7 +7,8 @@ var User = new mongoose.Schema({
 	    id: String,
 		displayName: String,
 		username: String
-    }
+    },
+    bars_attending: [String]
 });
 
 module.exports = mongoose.model('User', User);

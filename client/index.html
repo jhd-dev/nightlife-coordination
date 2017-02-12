@@ -7,7 +7,7 @@
     <body>
         <div id="col-main">
             <header>
-                <h1 id="head-main">Nighlife Coordination</h1>
+                <h1 id="head-main">Nightlife Coordination</h1>
                 <h2 id="desc-main">See what bars to head to tonight!</h2>
             </header>
             <div id="search-bar">
@@ -19,10 +19,13 @@
                     <img class="bar-photo" :src="bar.image_url" />
                     <div class="bar-info">
                         <h3 class="bar-name">{{bar.name}}</h3>
-                        <div class="join-bar-btn"></div>
-                        <div class="bar-reviews">
-                            <div class="bar-review"></div>
-                        </div>
+                        <img class="bar-rating" :src="bar.rating_img_url" />
+                        <div class="{
+                            'join-bar-btn': true,
+                            'user-going': bar.user_attending
+                        }" v-on:click="toggleUser(bar)">{{bar.number_attending}} going</div>
+                        <div class="bar-address">{{getAddress(bar)}}</div>
+                        <div class="bar-review">{{formatReview(bar)}}</div>
                     </div>
                 </div>
             </div>
