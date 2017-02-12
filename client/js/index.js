@@ -2,6 +2,8 @@
 
 $(document).ready(function(){
     
+    var storageKey = 'nightlife-search';
+    
     function updateBars(data){
         //console.log(data);
         barList.bars = data.bars;
@@ -9,7 +11,7 @@ $(document).ready(function(){
     
     function submitSearch(){
         var searchTerm = $('#search-text').val();
-        sessionStorage.setItem('nightlife-search', searchTerm);
+        sessionStorage.setItem(storageKey, searchTerm);
         $.ajax({
             type: 'GET',
             dataType: 'json',
@@ -79,7 +81,7 @@ $(document).ready(function(){
     });
     
     if (query.success){
-        var search = sessionStorage.getItem('nightlife-search');
+        var search = sessionStorage.getItem(storageKey);
         if (search){
             $('#search-text').val(search);
             submitSearch();
