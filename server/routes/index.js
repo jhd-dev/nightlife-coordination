@@ -42,7 +42,9 @@ module.exports = function(app, passport){
                             bars_attending: bar.id
                         }, function(err, users){
                             if (err) throw err;
-                            bar.user_attending = req.user ? users.indexOf(req.user.twitter.id) !== -1 : false;
+                            bar.user_attending = req.user ? users.some(function(user){
+                                return user.twitter.id === req.user.twitter.id;
+                            }) : false;
                             bar.number_attending = users.length;
                             bar.index = i;
                             recievedAttendance ++;
@@ -95,8 +97,8 @@ module.exports = function(app, passport){
     
 	app.route('/auth/twitter/callback')
 		.get(passport.authenticate('twitter', {
-			successRedirect: '/',
-			failureRedirect: '/login'
+			successRedirect: '/?success=1',
+			failureRedirect: '/'
 		}));
     
 };

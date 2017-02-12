@@ -3,17 +3,19 @@
 $(document).ready(function(){
     
     function updateBars(data){
-        console.log(data);
+        //console.log(data);
         barList.bars = data.bars;
     }
     
     function submitSearch(){
+        var searchTerm = $('#search-text').val();
+        sessionStorage.setItem('nightlife-search', searchTerm);
         $.ajax({
             type: 'GET',
             dataType: 'json',
             url: window.location.origin + '/api/search',
             data: {
-                location: $('#search-text').val()
+                location: searchTerm
             }
         })
             .done(updateBars)
@@ -47,9 +49,6 @@ $(document).ready(function(){
                             for (var key in keys){
                                 updated_bar[keys[key]] = data.updated_bar[keys[key]];
                             }
-                            
-                            //self.bars.push(updated_bar);
-                            console.log(self.bars);//, updated_bar.user_attending, updated_bar.number_attending, updated_bar);
                             var copy = self.bars.slice();
                             copy.splice(bar.index, 1, updated_bar);
                             self.bars = copy;
@@ -70,12 +69,21 @@ $(document).ready(function(){
     
     $('#search-text').on('keypress', function(e){
         if (e.keyCode === 13){
-            $('#search-btn').click();
+            submitSearch();
         }
     });
     
-    $('.join-bar-btn').on('click', function(){
-        
+    var query = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value){
+        query[key] = decodeURIComponent(value);
     });
+    
+    if (query.success){
+        var search = sessionStorage.getItem('nightlife-search');
+        if (search){
+            $('#search-text').val(search);
+            submitSearch();
+        }
+    }
     
 });
