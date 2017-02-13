@@ -6,11 +6,12 @@
         <link rel="stylesheet" href="/css/main.css" type="text/css" />
     </head>
     <body>
-        <div id="col-main">
-            <header>
+        <header>
                 <h1 id="head-main">Nightlife Coordination</h1>
                 <h2 id="desc-main">See what bars to head to tonight!</h2>
             </header>
+        <div id="col-main">
+            
             <div id="search-bar">
                 <input id="search-text" type="text" name="loc"/>
                 <button id="search-btn">Search</button>
@@ -19,21 +20,24 @@
                 <div v-for="bar in bars" class="bar">
                     <img class="bar-photo" :src="bar.image_url" />
                     <div class="bar-info">
-                        <h3 class="bar-name">{{bar.name}}</h3>
-                        <img class="bar-rating" :src="bar.rating_img_url" />
-                        <div :class="{
-                            'join-bar-btn': true,
-                            'user-going': bar.user_attending
-                        }" v-on:click="toggleUser(bar)">{{bar.number_attending}} going</div>
+                        <div class="bar-head">
+                            <a :href="bar.url" target="_blank"><h3 class="bar-name">{{bar.name}}</h3></a>
+                            <img class="bar-rating" :src="bar.rating_img_url" />
+                            <div :class="{
+                                'join-bar-btn': true,
+                                'user-going': bar.user_attending
+                            }" v-on:click="toggleUser(bar)">{{bar.number_attending}} going</div>
+                        </div>
                         <div class="bar-address">{{getAddress(bar)}}</div>
                         <div class="bar-review">{{formatReview(bar)}}</div>
                     </div>
                 </div>
             </div>
-            <footer>
-                <p id="yelp-credit">This service uses the <a href="https://www.yelp.com/developers">Yelp API</a>.</p>
-            </footer>
+            
         </div>
+        <footer>
+            <p id="yelp-credit">This service uses the <a href="https://www.yelp.com/developers" target="_blank">Yelp API</a>.</p>
+        </footer>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
